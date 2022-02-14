@@ -6,16 +6,72 @@
     font-style: normal;
 }
 
+:root{
+    --hover-color: white;
+    --button-color: purple;
+    --background-color: yellow;
+    background-color: var(--background-color);
+}
+
 .alarm {
     transform-origin: center;
     font-family: 'Supermercado';
     text-align: center;
     position: absolute;
-    top: 25%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    font-size: 32px;
   }
 
+.dashboard {
+    border: 7px solid;
+    border-color: var(--button-color);
+    border-radius: 15%;
+    width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-bottom: 20px;
+}
+
+.dashboardButton {
+    background: transparent;
+    font-size: 24px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border: 5px solid;
+    color: var(--button-color);
+    border-color: var(--button-color);
+    border-radius: 25%;
+    cursor: pointer;
+    transition: .10s linear,color .10s linear;
+}
+
+.dashboardButton:hover{
+    background-color: var(--button-color);
+    color: var(--hover-color);
+    transition: 0.10s linear,color 0.10s linear;
+}
+
+.ttsBox {
+    position: absolute;
+    top: 60%;
+    margin-top: 50px;
+    width: 90%;
+    left: 5%;
+    height: 50px;
+    font-size: 16px;
+    font-size: 24px;
+    text-align: center;
+    border: 0px;
+    background: transparent;
+}
+
 .time{
-    font-size: 64px;
+    font-size: 128px;
+    margin-bottom: 10px;
+    /* width: fit-content; */
 }
