@@ -19,15 +19,19 @@ class TimeInput extends React.Component {
 }
 
 class ButtonRow extends React.Component {
-
     render(){
         return(
             <div>
-                <button className='dashboardButton' onClick={() => this.props.onClick('hourMinus')}> - </button>
-                <button className='dashboardButton' onClick={() => this.props.onClick('hourPlus')}> + </button>
-                <button className='dashboardButton' onClick={() => this.props.onClick('stopStart')}> {'>'} </button>
-                <button className='dashboardButton' onClick={() => this.props.onClick('minuteMinus')}> - </button>
-                <button className='dashboardButton' onClick={() => this.props.onClick('minutePlus')}> + </button>
+                <button className='dashboardButton' disabled={this.props.disabled} 
+                onClick={() => this.props.onClick('hourMinus')}> - </button>
+                <button className='dashboardButton' disabled={this.props.disabled}
+                onClick={() => this.props.onClick('hourPlus')}> + </button>
+                <button className='dashboardButton'
+                onClick={() => this.props.onClick('stopStart')}> {'>'} </button>
+                <button className='dashboardButton' disabled={this.props.disabled}
+                onClick={() => this.props.onClick('minuteMinus')}> - </button>
+                <button className='dashboardButton' disabled={this.props.disabled}
+                onClick={() => this.props.onClick('minutePlus')}> + </button>
             </div>
         )
     }
@@ -49,16 +53,26 @@ class Alarm extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            time: [12, 0]
-        }
-;        // this.handleClick = this.handleClick.bind(this);
-        // this.updateState = this.updateState.bind(this) 
+            time: [12, 0],
+            alarmStarted: false
+        };
+        this.alarmTimer = null;
+    }
+    
+    calculateAlarm(currentDate, time){
+        const hour = time[0];
+        const minute = time[1];
+        let hourDiffToSec = ((hour - currentDate.getHours() + 24)) * 3600
+        let minDiffToSec = ((minute - currentDate.getMinutes())) * 60
+        let totalDiff = ((hourDiffToSec + minDiffToSec - currentDate.getSeconds())*1000) % 86400000
+        return(totalDiff)
     }
 
     handleClick(i){
         const time = this.state.time;
         const hour = time[0];
         const minute = time[1];
+        
         switch(i) {
             case 'hourMinus':
                 this.setState({
@@ -71,7 +85,13 @@ class Alarm extends React.Component {
                 });
                 break;
             case 'stopStart':
-                console.log('stop/start');
+                if(!this.alarmStarted){
+                    let currentDate = new Date();
+                    this.alarmTimer = setTimeout(console.log, this.calculateAlarm(currentDate, time), "buzz");
+                } else {
+                    clearTimeout(this.alarmTimer)
+                }
+                this.setState({alarmStarted : !this.state.alarmStarted});
                 break;
             case 'minuteMinus':
                 this.setState({
@@ -96,7 +116,10 @@ class Alarm extends React.Component {
             <div>
                 <div className='alarm dashboard'>
                     <TimeInput hour={hour} minute={minute}/>
-                    <ButtonRow onClick={(i) => this.handleClick(i)}/>
+                    <ButtonRow 
+                    onClick={(i) => this.handleClick(i)}
+                    disabled ={this.state.alarmStarted}
+                    />
                 </div>
                 <div>
                     <TTSInput />
