@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { BsMoon, BsSun } from "react-icons/bs"
 
 /* the time display hh:mm */
 class TimeInput extends React.Component {
@@ -75,14 +76,15 @@ class Alarm extends React.Component {
         this.state = {
             time: [12, 0],
             alarmStarted: false,
-            ttsText: ''
+            ttsText: '',
+            darkTheme: false
         };
         this.alarmTimer = null;
         this.ringAlarm = this.ringAlarm.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-     
+    
     /* calculates the difference in time between 
      now and when the alarm should chime */
     calculateAlarm(currentDate, time){
@@ -113,6 +115,7 @@ class Alarm extends React.Component {
         const hour = time[0];
         const minute = time[1];
         const alarmStarted = this.state.alarmStarted;
+        const className = "dark"
 
         switch(i) {
             /* decrease hour by 1 */
@@ -151,6 +154,15 @@ class Alarm extends React.Component {
                     time: [hour, (minute+1) % 60]
                 });
                 break;
+            /* toggles between light and dark mode */
+            case 'themeToggle':
+                if (!this.state.darkTheme) {
+                    document.documentElement.classList.add(className)
+                } else {
+                    document.documentElement.classList.remove(className)
+                }
+                this.setState({darkTheme: !this.state.darkTheme})
+                break;
             default:
                 console.log('hello');
         }
@@ -163,9 +175,18 @@ class Alarm extends React.Component {
     render(){
         const hour = this.state.time[0];
         const minute = this.state.time[1];
-
         return(
             <div>
+                <div>
+                    <button className="toggleButton" 
+                    onClick={() => this.handleClick('themeToggle')}>
+                        {this.state.darkTheme ? (
+                            <BsSun color="#ff0" size="24" title="Switch to light mode" />
+                        ) : (
+                            <BsMoon size="24" title="Switch to dark mode" />
+                        )}
+                    </button>
+                </div>
                 <div className='alarm dashboard'>
                     <TimeInput hour={hour} minute={minute}/>
                     <ButtonRow 
@@ -182,6 +203,8 @@ class Alarm extends React.Component {
         )
     }
 }
+
+// export default withMyHook(Alarm);
 
 ReactDOM.render(
     <Alarm />,
