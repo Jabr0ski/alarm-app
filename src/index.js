@@ -177,13 +177,13 @@ class Alarm extends React.Component {
         const minute = this.state.time[1];
         return(
             <div>
-                <div>
+                <div style={{ display: "flex", justifyContent: "flex-end" }}>
                     <button className="toggleButton" 
                     onClick={() => this.handleClick('themeToggle')}>
                         {this.state.darkTheme ? (
-                            <BsSun color="#ff0" size="24" title="Switch to light mode" />
+                            <BsSun color="#ff0" size="32" title="Switch to light mode" />
                         ) : (
-                            <BsMoon size="24" title="Switch to dark mode" />
+                            <BsMoon size="32" title="Switch to dark mode" />
                         )}
                     </button>
                 </div>
