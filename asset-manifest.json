@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Jabr0ski/alarm-app/static/css/main.ea5587a1.css",
+    "main.js": "/Jabr0ski/alarm-app/static/js/main.696b6ef4.js",
+    "static/media/Supermercado-Regular.woff": "/Jabr0ski/alarm-app/static/media/Supermercado-Regular.4c951a397c1468668a19.woff",
+    "static/media/SupermercadoOne-Regular.woff2": "/Jabr0ski/alarm-app/static/media/SupermercadoOne-Regular.eda4247c5f5e8beebbba.woff2",
+    "index.html": "/Jabr0ski/alarm-app/index.html",
+    "main.ea5587a1.css.map": "/Jabr0ski/alarm-app/static/css/main.ea5587a1.css.map",
+    "main.696b6ef4.js.map": "/Jabr0ski/alarm-app/static/js/main.696b6ef4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea5587a1.css",
+    "static/js/main.696b6ef4.js"
+  ]
+}
