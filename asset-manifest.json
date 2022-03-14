@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.f972d696.css",
+    "main.css": "./static/css/main.74ec2156.css",
     "main.js": "./static/js/main.696b6ef4.js",
     "static/media/Supermercado-Regular.woff": "./static/media/Supermercado-Regular.4c951a397c1468668a19.woff",
     "static/media/SupermercadoOne-Regular.woff2": "./static/media/SupermercadoOne-Regular.eda4247c5f5e8beebbba.woff2",
     "index.html": "./index.html",
-    "main.f972d696.css.map": "./static/css/main.f972d696.css.map",
+    "main.74ec2156.css.map": "./static/css/main.74ec2156.css.map",
     "main.696b6ef4.js.map": "./static/js/main.696b6ef4.js.map"
   },
   "entrypoints": [
-    "static/css/main.f972d696.css",
+    "static/css/main.74ec2156.css",
     "static/js/main.696b6ef4.js"
   ]
 }
