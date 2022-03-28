@@ -82,20 +82,30 @@
 
 .ttsBox {
     position: absolute;
+    resize: none;
     top: 60%;
     margin-top: 50px;
     width: 90%;
     left: 5%;
-    height: 50px;
+    height: 100px;
     font-size: 16px;
     font-size: 24px;
     text-align: center;
     border: 0px;
     background: transparent;
-    word-wrap: break-word;
+}
+
+.ttsBox:focus { 
+    outline: none;
 }
 
 .time{
     font-size: 128px;
     margin-bottom: 10px;
+}
+
+@media all and (max-width: 370px){
+    .dashboard{
+        min-width: 290px;
+    }
 }

@@ -45,11 +45,11 @@ class TTSInput extends React.Component {
     render(){
         return(
             <div>
-                <input type= "text" className='ttsBox' 
+                <textarea type= "text" className='ttsBox' 
                 placeholder='Type a message here to be read when the alarm rings'
                 value={this.props.ttsText}
                 onChange={this.props.onChange}>
-                </input>
+                </textarea>
             </div>
         )
     }
